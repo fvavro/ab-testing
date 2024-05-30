@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Simple Webpage</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Hand-in Webpage</h1>
+    </header>
+    <nav>
+        <h1>AB-Testing</h1>
+    </nav>
+    <main>
+        <section id="overview">
+            <h2>Overview</h2>
+            <p>In this A/B testing project, we aim to understand the underlying statistics of A/B tests on websites. For this assignment, we have made a minor change to a static HTML website and tested how this small change affects user interactions. A/B testing allows us to perform quantitative analysis on user behavior and understand the impact of design changes. Our goal is to measure how this change influences users performing a specific task: scheduling an appointment with Adam Ng, MD at Morristown Medical Center on April 23, 2024.</p>
+        </section>
+        <section id="changes-made">
+            <h2>Changes Made</h2>
+            <p>I changed the 'schedule appointment' buttons to light blue to make them easier to see and make the interaction more clear. I also changed the title of the table to "Schedule an Appointment Below" so users are more clear on what they have to do. Below is a screenshot of the modified webpage:</p>
+            <img src="screenshot.png" alt="Screenshot of the changes made to the website. One button is lighter than the other, providing more contrast" class="small-image">
+        </section>
+        <section id="metrics-and-hypotheses">
+            <h2>Metrics and Hypotheses</h2>
+            
+            <div class="box">
+                <section id="chosen-metric">
+                    <h3>1. Chosen Metric: Mouse Movement Distance (pixels)</h3>
+                    <section id="null-hypothesis">
+                        <h4><u>Null Hypothesis:</u></h4>
+                        <p>The mouse movement distance in version A will be the same as the mouse movement distance in version B.</p>
+                    </section>
+                    <section id="alternative-hypothesis">
+                        <h4><u>Alternative Hypothesis:</u></h4>
+                        <p>The mouse movement distance in version B will be different than the mouse movement distance in version A.</p>
+                    </section>
+                    <section id="reasoning">
+                        <h4><u>Reasoning:</u></h4>
+                        <p>Lower mouse movement distance may indicate improved user experience, suggesting that the design change has made it easier for users to navigate the website. The alternative hypothesis implies that Version B's design leads to a more efficient user experience. Since our original alpha is 0.05, the low p-value indicates that the observed difference in mouse movement distance between the versions is statistically significant.</p>
+                    </section>
+                </section>
+            </div>
+
+            <div class="box">
+                <section id="misclick-rate">
+                    <h3>2. Misclick Rate</h3>
+                    <section id="null-hypothesis">
+                        <h4><u>Null Hypothesis:</u></h4>
+                        <p>The misclick rate in version A will be the same as the misclick rate in version B.</p>
+                    </section>
+                    <section id="alternative-hypothesis">
+                        <h4><u>Alternative Hypothesis:</u></h4>
+                        <p>The misclick rate in version B will be different than the misclick rate in Version A.</p>
+                    </section>
+                    <section id="reasoning">
+                        <h4><u>Reasoning:</u></h4>
+                        <p>Since the color of ‘schedule appointment’ is now highlighted, I think it will be easier for users to find the correct button to press to schedule the appointment. Therefore, the misclick rate will differ. A lower misclick rate suggests that users are interacting more accurately with the website, indicating an improvement in usability. The alternative hypothesis suggests that the design changes have positively influenced user interaction. Since our original alpha is 0.05, the low p-value suggests that the difference in misclick rates between the versions is statistically significant.
+
+                        </p>
+                    </section>
+                </section>
+            </div>
+
+            <div class="box">
+                <section id="time-on-page">
+                    <h3>3. Time on Page (milliseconds)</h3>
+                    <section id="null-hypothesis">
+                        <h4><u>Null Hypothesis:</u></h4>
+                        <p>The time on page in version A will be the same as the time on page in version B.</p>
+                    </section>
+                    <section id="alternative-hypothesis">
+                        <h4><u>Alternative Hypothesis:</u></h4>
+                        <p>The time on page in version B will be less than the time on page in version A.</p>
+                    </section>
+                    <section id="reasoning">
+                        <h4><u>Reasoning:</u></h4>
+                        <p>Since the title has changed to be clearer, a user will understand that the primary screen they’re on is to schedule an appointment. Therefore, it should be quicker to schedule an appointment. A lower time on page indicates that users are spending less time to complete the task, suggesting improved usability and clarity of design. The alternative hypothesis implies that Version B's design leads to quicker task completion. Since our original alpha is 0.05, the low p-value indicates that the observed difference in time on page between the versions is statistically significant.</p>
+                    </section>
+                </section>
+            </div>
+        </section>
+
+        <section id="statistical-analysis">
+            <h2>Statistical Analysis</h2>
+
+            <div class="box">
+                <h3>Misclick Rate</h3>
+                <p>Test Used: Chi-Squared Test<br>
+                Chi-Squared Value: 6.428571429<br>
+                p-Value: 0.01<br>
+                This high chi-squared value indicates a significant deviation in misclicks, suggesting a statistically significant difference between the two versions. Therefore, we reject the null hypothesis and accept the alternative hypothesis that the two misclick rates are different.</p>
+            </div>
+
+            <div class="box">
+                <h3>Time on Page</h3>
+                <p>Test Used: One-tailed t-test<br>
+                Means: Version A: 38216.95 ms, Version B: 9046.29 ms<br>
+                p-Value: 0.000000001<br>
+                The p-value being very close to zero indicates a statistically significant difference, allowing us to confidently reject the null hypothesis and accept the alternative hypothesis that Version B has a lower time on page than Version A.</p>
+            </div>
+
+            <div class="box">
+                <h3>Mouse Movement Distance</h3>
+                <p>Test Used: Two-tailed t-test<br>
+                Means: Version A: 8975.16572 pixels, Version B: 2796.220981 pixels<br>
+                p-Value: 0.0001<br>
+                A high t-score and low p-value indicate a significant difference between the means. Therefore, we confidently reject the null hypothesis and accept the alternative hypothesis that the mouse movement distances are different.</p>
+            </div>
+
+            <section id="summary-statistics">
+                <h2>Summary Statistics</h2>
+                <ul>
+                    <li style="padding-bottom: 1.5rem;">Time on Page (ms) for Version A
+                        <ul>
+                            <li>Mean: 38216.95</li>
+                            <li>Median: 36748.5</li>
+                            <li>Variance: 10618784.73</li>
+                        </ul>
+                        These statistics suggest that users are spending a considerable amount of time on the page, which could indicate potential usability issues or content complexity. The variance indicates the spread of the data points around the mean.
+                    </li>
+                    <li style="padding-bottom: 1.5rem;">Time on Page (ms) for Version B
+                        <ul>
+                            <li>Mean: 9046.29</li>
+                            <li>Median: 9500</li>
+                            <li>Variance: 13750412.34</li>
+                        </ul>
+                        The lower mean and median time on page for Version B suggest that users are spending less time on the page, which could indicate improved usability and clarity of design. The higher variance indicates a wider spread of data points around the mean.
+                    </li>
+                    <li style="padding-bottom: 1.5rem;">Mouse Movement Distance (pixels) for Version A
+                        <ul>
+                            <li>Mean: 8975.16572</li>
+                            <li>Median: 9100</li>
+                            <li>Variance: 13368207.01</li>
+                        </ul>
+                        The mean and median mouse movement distance for Version A are relatively high, indicating a potentially higher cognitive load or difficulty in navigation. The variance suggests a wide distribution of mouse movement distances.
+                    </li>
+                    <li style="padding-bottom: 1.5rem;">Mouse Movement Distance (pixels) for Version B
+                        <ul>
+                            <li>Mean: 2796.220981</li>
+                            <li>Median: 3000</li>
+                            <li>Variance: 203049.125</li>
+                        </ul>
+                        The significantly lower mean and median mouse movement distance for Version B suggest that users are experiencing less cognitive load and smoother navigation. The lower variance indicates a more consistent user experience in terms of mouse movement.
+                    </li>
+                </ul>
+            </section>
+            
+            
+            
+            <section id="conclusion">
+                <h2>Conclusion</h2>
+                <p>The changes made to the website were successful in improving the user experience. The misclick rate, time on page, and mouse movement distance were all significantly different between the two versions, with the new version showing improvements across these metrics. This project demonstrates the powerful nature of statistical tests in measuring the impact of design changes on user behavior.</p>
+            </section>
+        </section>
+    </main>
+    <footer>
+        <p>Fanny Vavrovsky</p>
+    </footer>
+</body>
+</html>
